@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
             TextField(controller: Text3),
             SizedBox(height: 20),
             GestureDetector(
-              onTap: () => _launchURL('https://vk.com/dazacht0'),
+              onTap: () => _launchURL(Uri.parse('https://vk.com/dazacht0')),
               child: Text(
                 'Мой ВК',
                 style: TextStyle(
@@ -61,11 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  Future<void> _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  Future<void> _launchURL(Uri uri) async {
+    await canLaunchUrl(uri);
   }
 }
